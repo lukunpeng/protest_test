@@ -1,3 +1,2 @@
 let name =20
-let name =20
-let name =20
+var as = 13
