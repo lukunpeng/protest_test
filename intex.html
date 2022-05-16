@@ -5,14 +5,73 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="./jquery.min.js"></script>
 </head>
 <body>
-    <h1>这是一个标题</h1>
-    <h1>这是一个标题</h1>
-    <h1>这是一个标题</h1>
-    <h1>这是一个标题</h1>
-    <h1>这是一个标题</h1>
-    <h1>这是一个标题</h1>
-    <div>有点小 exciting</div>
+<!-- <script>
+    function F(){}
+        Object.prototype.a = function(){
+            console.log("a()");
+        };  
+
+        Function.prototype.b = function(){
+            console.log("b()");
+        };
+
+        var f = new F();
+        f.a();
+        // f.b(); 不能执行
+        F.a(); 
+        F.b();
+</script> -->
+
+<script type="text/javascript">
+    $(function(){
+        var json = {
+            "text" : "表格列名称",
+            "children" : [{
+                "text" : "序号",
+                "children" : [{
+                    "text" : "序号一",
+                    "children" : []
+                },{
+                    "text" : "序号二",
+                    "children" : []
+                }]
+            },{
+                "text" : "名称",
+                "children" : []
+            },{
+                "text" : "项目",
+                "children" : [{
+                    "text" : "项目一",
+                    "children" : [{
+                        "text" : "项目二",
+                        "children" : []
+                    }]
+                }]
+            }]
+        };
+        //colspan记录节点的所有叶子节点个数
+        function getLeafCountTree(json) {
+            if(json.children.length == 0){
+                json.colspan = 1;
+                return 1;
+            }else{
+                var leafCount = 0;
+                for(var i = 0 ; i < json.children.length ; i++){
+                    leafCount = leafCount + getLeafCountTree(json.children[i]);
+                }
+                json.colspan = leafCount;
+                return leafCount;
+            }
+        }
+        getLeafCountTree(json);
+    });
+</script>
+
+<!-- ———————————————— -->
+<!-- 版权声明：本文为CSDN博主「星月神话_」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。
+原文链接：https://blog.csdn.net/lh376152/article/details/73835517 -->
 </body>
 </html>
